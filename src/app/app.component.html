@@ -1,0 +1,86 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <a class="navbar-brand" href="#">Navbar</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01"
+    aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarColor01">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Features</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Pricing</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">About</a>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="text" placeholder="Search">
+      <button class="btn btn-secundary my-2 my-sm-0" type="submit">Search</button>
+    </form>
+  </div>
+</nav>
+
+
+<app-header></app-header>
+<h5>Lista de Usuarios</h5>
+<div class="row">
+  <div class="col">
+    <form class="form-group" (submit)="agregarUsuario();">
+      <div class="row">
+        <div class="col d-flex justify-content-start">
+          <input class="form-control mr-2" type="text" value="Luchito" #inputuDato>
+          <button class="btn btn-outline-primary" (click)="capturarDato(inputuDato);">Agregar</button>
+        </div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="col">
+          <div id="agragar" class="text-success"></div>
+          <div id="eliminar" class="text-danger"></div>
+        </div>
+      </div>
+    </form>
+
+    <table class="table table">
+      <thead class="m-1 table table-primary">
+        <tr>
+          <th scope="col">Usuarios</th>
+          <th scope="col">Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="table-active" *ngFor="let usuario of arrayUsuarios">
+          <th>
+            <li>{{usuario}}</li>
+          </th>
+          <td><button class="btn btn-outline-danger" (click)="eliminarUsuario(usuario);">Eliminar</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="col">
+      <h4 style="color: rgb(0, 217, 255)">Cambiar de texto instantaneamente: </h4>
+    <form>
+      <div class="from-group">
+        <input type="text" class="form-control mt-5" name="name" [(ngModel)]="name"><hr>
+        <label for="name" style="color: rgb(0, 217, 255);">Nombre : {{ name }}</label>
+        <hr style="border: solid 1px rgb(0, 217, 255);">
+
+        <input type="text" class="form-control" name="age" [(ngModel)]="age"><hr>
+        <label for="age" style="color: rgb(0, 217, 255);">Edad : {{ age }}</label>
+        <hr style="border: solid 1px rgb(0, 217, 255);">
+
+      </div>
+    </form>
+  </div>
+
+</div>
+<router-outlet></router-outlet>
